@@ -1,15 +1,46 @@
-# If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
-# Findthe sum of all the multiples of 3 or 5 below 1000.
-a = 1
-b = 2
-c = 0
-sum = 2
-while c < 4000000:
-    c = a + b
-    a = b
-    b = c
-    if c % 2 == 0:
-        print(c, "c is ")
-        sum += c
+import math
+#sol 906609
+# 998.001 999x999
+match = 0
+found = False
+number1 = str(91)
+number2 = str(99)
+number3 = str(1224)
 
-print(sum)
+
+def primTest(p):
+    for i in range(2,int(math.sqrt(p))+1):
+        if p % i == 0:
+            #print("keine prim " , p)
+            return False
+    return True
+
+
+def findPalin():
+    global match
+    for j in range(100000, 998001):
+        for i in range(len(str(j))//2):
+            lenminus = len(str(j)) - 1
+            numberA = str(j)[i]
+            numberB = str(j)[lenminus-i]
+
+            #print(numberA)
+           # print(numberB)
+            #print("")
+
+            if numberA == numberB:
+               # print("same")
+               # print(j)
+                match += 1
+
+            if match == 3 and j % 3 == 0:
+                print("found it ", j)
+
+
+        match = 0
+
+
+
+
+findPalin()
+
